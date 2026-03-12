@@ -193,6 +193,11 @@ function App() {
       { id: 'device', label: 'Device Only' },
       { id: 'network', label: 'Network (HTTP jsonp)' },
     ],
+    showAlerts: [
+      { id: 'none', label: 'None' },
+      { id: 'priorityOnly', label: 'Phone Silent Alert only' },
+      { id: 'all', label: 'All Alerts' },
+    ],
     analogClockActive: false,
     alertEnabled: true,
     analogClockTheme: 'default',
@@ -234,6 +239,7 @@ function App() {
       timeOriginModes: false,
       timeAdjustNew: false,
       rememberWifi: false,
+      showAlerts: false,
     },
     focusActiveTimer: true,
     showRememberWifiSetting: true,
@@ -267,6 +273,9 @@ function App() {
     currentlyShowingAlert: function () {
       var shouldShow = self.data.prayerInfo === 'iqamah';
       var alerts = self.data.alertImages;
+      if(self.data.alertEnabled != 'all') {
+        alerts = [alerts[0]]; // remove non priority alerts
+      }
       if (!window._mdCurrentAlert) {
         window._mdCurrentAlert = 0;
       }
@@ -1323,8 +1332,13 @@ function App() {
       if (settings.analogClockActive) {
         // self.data.analogClockActive = true;
       }
-      if (settings.alertEnabled === false) {
-        self.data.alertEnabled = false;
+      if (settings.alertEnabled) {
+        self.data.alertEnabled = settings.alertEnabled;
+        if(settings.alertEnabled === true) {
+          self.data.alertEnabled = 'all';          
+        }
+      } else {
+        self.data.alertEnabled = 'priorityOnly';        
       }
       if (settings.tarawihEnabled) {
         self.data.tarawihEnabled = true;

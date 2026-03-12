@@ -7,7 +7,7 @@ if (workbox) {
 var baseUrl = '/live/';
 var appVersion = '2.17.5-165';
 var dataVersion = '10';
-var vendorVersion = '11';
+var vendorVersion = '12';
 var bgVersion = '8';
 
 // Detailed logging is very useful during development

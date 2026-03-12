@@ -462,8 +462,34 @@
                         v-model="alertEnabled"
                         @change="updateSettings()"
                       />
-                      Warning and Reminder icons
+                      Show Alerts
                     </label>
+                  </div>
+                  <div class="config-item other-config" style="height: auto;">
+                    <div>
+                      Show Alerts
+                      <small>
+                        >
+                        <a href="#" @click="expanded.showAlerts = !expanded.showAlerts;">
+                          <span v-if="expanded.showAlerts">dismiss</span>
+                          <span v-else>{{ getSelected(showAlerts, alertEnabled) }}</span>
+                        </a>
+                      </small>
+                    </div>
+                    <div v-if="expanded.showAlerts">
+                    <label v-for="showAlert in showAlerts" :for="'show-alert-select-' + showAlert.id" style="display: block;">
+                      <input
+                        :id="'show-alert-select-' + showAlert.id"
+                        type="radio"
+                        name="show-alert-select"
+                        :value="showAlert.id"
+                        v-model="alertEnabled"
+                        @change="expanded.showAlerts = false; updateSettings()"
+                      />
+                      {{ showAlert.label }}
+                      &nbsp;
+                    </label>
+                    </div>
                   </div>
                   <div class="config-item other-config">
                     <label for="focus-active-timer-check">
@@ -474,7 +500,7 @@
                         v-model="focusActiveTimer"
                         @change="updateSettings()"
                       />
-                      <small>[beta]</small> Focus Countdown Timer
+                      Focus Countdown Timer
                     </label>
                   </div>
                   <div class="config-item other-config" style="height: auto;">
