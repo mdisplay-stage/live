@@ -8,7 +8,7 @@ var baseUrl = '/live/';
 var appVersion = '2.17.6-166';
 var dataVersion = '10';
 var vendorVersion = '12';
-var bgVersion = '8';
+var bgVersion = '9';
 
 // Detailed logging is very useful during development
 workbox.setConfig({

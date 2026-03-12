@@ -268,7 +268,7 @@ function App() {
       if (!shouldShow) {
         return false;
       }
-      return self.data.alertEnabled && (self.data.currentPrayerWaiting || self.data.currentPrayerAfter);
+      return (self.data.alertEnabled && self.data.alertEnabled != 'none') && (self.data.currentPrayerWaiting || self.data.currentPrayerAfter);
     },
     currentlyShowingAlert: function () {
       var shouldShow = self.data.prayerInfo === 'iqamah';
@@ -355,7 +355,7 @@ function App() {
   // self.afterSeconds = 1*60;
   self.afterSeconds = 2 * 60;
   self.pauseSeconds = 15;
-  self.data.bgVersion = '7';
+  self.data.bgVersion = '9';
 
   // METHODS begin
 
