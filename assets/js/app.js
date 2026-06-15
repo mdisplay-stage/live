@@ -111,6 +111,7 @@ function App() {
       versionNumber: 0,
     },
     vStable: 165, // should be updated major version
+    latestApkVersion: '2.0.2',
     isDevDebugging: isDevDebugging,
     devDebugMessage: 'dev - testing 3',
     showSplash: true,
@@ -261,6 +262,16 @@ function App() {
     isWifiScanning: false,
     wifiScanResults: [],
     rememberWifiEditLocked: true,
+    mdLauncher: {
+      version: 'Unknown',
+      apkUpdaterAvailable: false,
+      download: {
+        name: '',
+        progress: -1,
+        progressData: {},
+        readyToInstall: false,
+      },
+    },
   };
   self.computed = {
     showAlert: function () {
@@ -1486,8 +1497,10 @@ function App() {
 
     var fileContent = JSON.stringify(backupData, null, 2);
 
+    var storageDoneCallback = storageOnly ? doneCallback : function() {};
+
     if(window.cordova && self.isDeviceReady) {
-      self.writeStorageToFile(fileContent, doneCallback);
+      self.writeStorageToFile(fileContent, storageDoneCallback);
     }
     if(storageOnly) {
       return;
@@ -1528,7 +1541,7 @@ function App() {
                   alert('Backup file saved to downloads');
                   if(doneCallback) {
                     doneCallback();
-                  }          
+                  }
                 };
                 writer.seek(0);
                 writer.write(
@@ -2056,6 +2069,195 @@ function App() {
         self.data.isWifiScanning = false;
         self.data.showWifiScan = false;
     });
+  };
+  self.downloadApk = function() {
+    if(self.data.latestApkVersion == self.data.mdLauncher.version && !confirm('Already using the latest version (' + self.data.latestApkVersion + ') Are you sure to re-download?')) {
+      return;
+    }
+    self.backupSettings(false, function() {
+      self.proceedDownloadApk();
+    }, false);
+  };
+  self.proceedDownloadApk = function() {
+    var apkFileName = 'mdisplay-launcher-' + self.data.latestApkVersion + '.apk';
+    var apkUrl = (isLocalhost ? 'http://192.168.1.199:8080/down/' : 'https://github.com/mdisplay' + (isDevDebugging ? '-stage' : '') + '/live/releases/download/' + self.data.latestApkVersion + '/')  + apkFileName;
+
+    apkUrl = 'https://github.com/mdisplay/mdisplay-launcher-releases/archive/refs/heads/main.zip';
+
+    if(!window.ApkUpdater) {
+      var fileTransferAvailable = window.FileTransfer;
+      alert('Auto Updater not available. Please contact support for assistance in installing the latest APK.' + (fileTransferAvailable ? ' Downloading the Latest APK to "Downloads" folder...' : ''));
+      if(!fileTransferAvailable || !window.zip) {
+        return;
+      }
+
+      self.downloadApkFromZipUrl(apkUrl);
+      // var fileTransfer = new FileTransfer();
+      // var targetPath = cordova.file.externalRootDirectory + 'Download/' + apkFileName;
+      // fileTransfer.download(
+      //     encodeURI(apkUrl),
+      //     targetPath,
+      //     function (entry) {
+      //         console.log("Download complete: " + entry.toURL());
+      //         alert('APK File downloaded: ' + entry.toURL());
+      //     },
+      //     function (error) {
+      //       alert('Download error: ' + JSON.stringify(error));
+      //         console.error("Download error source " + error.source);
+      //         console.error("Download error target " + error.target);
+      //         console.error("Upload error code " + error.code);
+      //     },
+      //     true // trustAllHosts = true (Bypasses CertPathValidatorException)
+      // );
+      return;
+    }
+    self.data.mdLauncher.apkUpdaterAvailable = true;
+    ApkUpdater.download(
+        apkUrl,
+        {
+            onDownloadProgress: function(data) {
+              self.data.mdLauncher.download.progress = data.progress;
+              self.data.mdLauncher.download.progressData = data;
+            },
+            onUnzipProgress: function(data) {
+              self.data.mdLauncher.download.progress = data.progress;
+              self.data.mdLauncher.download.progressData = data;
+            },
+        },
+        function () {
+          // alert('downloaded');
+            // ApkUpdater.install(console.log, console.error);
+          ApkUpdater.getDownloadedUpdate(function(data) {
+            // alert(JSON.stringify(data));
+            // alert(data.app.version.name);
+            if(data && data.app && data.app.version && data.app.version.name != '1.10.1') {
+              // some other apk downloaded
+              alert('Invalid APK downloaded');
+              return;
+            }
+            
+            self.data.mdLauncher.download.name = data.name;
+            self.data.mdLauncher.download.readyToInstall = true;
+            
+          }, function(err){ alert(err); });
+        }, function(err){ alert('Download Failed: ' + JSON.stringify(err)); });
+  };
+  self.downloadApkFromZipUrl = function(zipUrl) {
+
+    var zipStatus = {};
+
+    function extractZipEntry (tempDirEntry, fileEntry) {
+      zipStatus.status = 'Extracting zip...';
+      // self.getAppDirectoryEntry(function (dirEntry) {
+        // 
+        var targetPath = tempDirEntry.toURL();
+        var targetPath = cordova.file.externalRootDirectory + 'Download/';
+        zip.unzip(fileEntry.toURL(), targetPath, function (err) {
+          if (err) {
+            alert('Failed to extract zip: ' + err);
+            self.data.mdLauncher.download.progress = -1;
+            return;
+          }
+          setTimeout(function () {
+            zipStatus.isDownloading = false;
+            zipStatus.isDownloaded = false;
+            zipStatus.isError = false;
+          }, 1000);
+          alert('File downloaded successfully! Please use File Manager to install apk from "Download/mdisplay-launcher-releases-main"');
+          self.data.mdLauncher.download.progress = -1;
+          //
+        }, function (progressEvent) {
+          var progressPercentage = Math.round(progressEvent.loaded / progressEvent.total * 100);
+          zipStatus.status = 'Extracting zip... (' + progressPercentage + '%)';
+          //
+        });
+    }
+
+    function doDownloadZipFile(tempDirEntry) {
+      var fileTransfer = new FileTransfer();
+      var fileURL = tempDirEntry.toURL() + '/mdapp.zip';
+      var uri = encodeURI(zipUrl);
+      zipStatus.isActive = true;
+      zipStatus.progressComputable = false;
+      zipStatus.progressPercentage = 0;
+      zipStatus.progressCurrentSize = '0 KB';
+      zipStatus.progressTotalSize = 'Unknown';
+      zipStatus.isDownloading = true;
+      zipStatus.isDownloaded = false;
+      zipStatus.isError = false;
+      zipStatus.status = 'Unknown';
+      self.data.mdLauncher.download.progress = 0;
+      fileTransfer.onprogress = function (progressEvent) {
+        zipStatus.progressComputable = progressEvent.lengthComputable;
+        if (progressEvent.lengthComputable) {
+          // Calculate the percentage
+          var percentCompleted = progressEvent.loaded * 100 / progressEvent.total;
+          zipStatus.progressPercentage = Math.round(percentCompleted);
+        } else {
+          var sizeEstimated = 1 * 1024 * 1024; // 1 MB
+          if (progressEvent.loaded < sizeEstimated) {
+            var _percentCompleted = progressEvent.loaded * 100 / sizeEstimated;
+            zipStatus.progressPercentage = Math.round(_percentCompleted / 2);
+          } else {
+            var newPercent = zipStatus.progressPercentage + 1;
+            if (newPercent > 99) {
+              newPercent = 99;
+            }
+            zipStatus.progressPercentage = Math.round(newPercent);
+          }
+        }
+        self.data.mdLauncher.download.progress = zipStatus.progressPercentage;
+
+        // Display percentage in the UI
+        // console.log('download progress', progressEvent);
+      };
+
+      fileTransfer.download(uri, fileURL, function (entry) {
+        console.log('download complete: ' + entry.toURL());
+        zipStatus.isDownloading = false;
+        zipStatus.isDownloaded = true;
+        zipStatus.progressPercentage = 100;
+        zipStatus.status = 'Zip file downloaded';
+        setTimeout(function () {
+          zipStatus.status = 'Deleting existing files...';
+          setTimeout(function () {
+            extractZipEntry(tempDirEntry, entry);
+          }, 1000);
+        }, 1000);
+      }, function (error) {
+        console.log('download error source ' + error.source);
+        console.log('download error target ' + error.target);
+        console.log('download error code' + error.code);
+        console.log('download error', error);
+        zipStatus.isDownloading = false;
+        zipStatus.isError = true;
+        zipStatus.status = error.exception + '. (Check the device time and internet connectivity)';
+        alert('Failed to download. Please try again later. Err: ' + JSON.stringify(error));
+        // setTimeout(function () {
+        //   doDownloadZipFile(tempDirEntry, fileEntry);
+        // }, 3000);
+      }, false, {
+        headers: {
+          // Authorization: 'Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA==',
+        }
+      });
+    }
+
+    window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+      console.log('file system open: ' + fs.name);
+      var dirEntry = fs.root;
+      doDownloadZipFile(dirEntry);
+    }, function (err) {
+      alert('Temporary File System could not be loaded: ' + err);
+      console.log(err);
+    });
+
+  };
+  self.installApk = function() {
+    if(self.data.latestApkVersion == self.data.mdLauncher.version && !confirm('Already using the latest version (' + self.data.latestApkVersion + ') Are you sure to re-install?')) {
+      return;
+    }
+    ApkUpdater.install(console.log, function(err){ alert('Install Failed: ' + err); });
   };
   self.init = function (initialTestTime, callback, analogClock) {
     self.initialTestTime = initialTestTime;

@@ -624,6 +624,18 @@
                 </div>
 
               </div>
+
+              <div style="padding: 0.5rem; background: #EEE; color: #000; margin-top: 1rem; border-radius: 5px; text-align: left;">
+                <strong>MDisplay Launcher APK</strong> Current Version: {{ mdLauncher.version }}
+                <br>
+                <a v-if="!mdLauncher.download.readyToInstall" href="#" @click="downloadApk()">Download Update ({{ latestApkVersion }})</a>
+                <span v-if="!mdLauncher.download.readyToInstall && mdLauncher.download.progress > -1">({{mdLauncher.download.progress}}%)</span>
+                <span v-if="mdLauncher.download.readyToInstall">
+                  &middot;
+                  <a href="#" @click="installApk()">Install Update ({{mdLauncher.download.name}})</a>
+                </span>
+              </div>
+
               <div class="close-buttons-container">
                 <span class="setting-close-button settings-save" @click="saveAndCloseSettings()">Done</span>
               </div>
@@ -923,6 +935,21 @@
       // WARNING: do not use ES6 syntax
       // The code should only be authored in ES5
       // to support older generation Android TV boxes
+      try {
+        var hashData = JSON.parse(decodeURIComponent(window.location.hash.substring(1)));
+        if(hashData && hashData.version) {
+          // alert('APK version: '+ hashData.version);
+          window.mdApp.data.mdLauncher.version = hashData.version;
+          window.localStorage.setItem('mdLauncherData', JSON.stringify({version: hashData.version}));
+        }
+      } catch(e) {}
+      if(!window.mdApp.data.mdLauncher.version || window.mdApp.data.mdLauncher.version == 'Unknown') {
+        try {
+          var mdLauncherData = JSON.parse(localStorage.getItem('mdLauncherData'));
+          window.mdApp.data.mdLauncher.version = mdLauncherData.version;
+        } catch(e) {}
+      }
+
 
       var fullVersion = '?v=2.17.7-167';
       window.mdApp.data.appVersion = window.mdApp.parseVersion(fullVersion);
@@ -937,7 +964,7 @@
         //   alert('Not intended to run in a non-cordova environment');
       }
 
-      var isLocalhost = window.location.hostname == 'localhost' || window.location.hostname == '192.168.1.11' || window.location.hostname == localStorage.getItem('local-ip');
+      var isLocalhost = window.location.hostname == 'localhost' || window.location.hostname.indexOf('192.168.1.') != -1 || window.location.hostname == localStorage.getItem('local-ip');
       var enableServiceWorker = /* !isLocalhost && */!window.cordova;
 
       var isSimulating = true;
@@ -1033,6 +1060,12 @@
             scanWifiNetworks: function() {
               return window.mdApp.scanWifiNetworks();
             },
+            downloadApk: function() {
+              return window.mdApp.downloadApk();
+            },
+            installApk: function() {
+              return window.mdApp.installApk();
+            },
             closeWifiScan: function() {
             },
             // lockRememberWifiEdit: function() {
@@ -1080,6 +1113,13 @@
           });
         }
       }
+      // setTimeout(function() {
+      //   if(window.mdAppSettings) {
+      //     alert('window.mdAppSettings.version: ' + window.mdAppSettings.version);
+      //   } else {
+      //     alert('window.mdAppSettings not present');
+      //   }
+      // }, 5000);
     </script>
   </body>
 </html>
