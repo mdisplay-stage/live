@@ -110,7 +110,7 @@ function App() {
       versionString: '0.0.0',
       versionNumber: 0,
     },
-    vStable: 165, // should be updated major version
+    vStable: 168, // should be updated major version
     latestApkVersion: '2.0.2',
     isDevDebugging: isDevDebugging,
     devDebugMessage: 'dev - testing 3',
