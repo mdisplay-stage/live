@@ -111,7 +111,7 @@ function App() {
       versionNumber: 0,
     },
     vStable: 170, // should be updated major version
-    latestApkVersion: '2.1.0',
+    latestApkVersion: '2.1.1',
     isDevDebugging: isDevDebugging,
     devDebugMessage: 'dev - testing 3',
     showSplash: true,
