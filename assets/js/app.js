@@ -2070,21 +2070,21 @@ function App() {
         self.data.showWifiScan = false;
     });
   };
-  self.downloadApk = function() {
+  self.downloadApk = function(altMethod) {
     if(self.data.latestApkVersion == self.data.mdLauncher.version && !confirm('Already using the latest version (' + self.data.latestApkVersion + ') Are you sure to re-download?')) {
       return;
     }
     self.backupSettings(false, function() {
-      self.proceedDownloadApk();
+      self.proceedDownloadApk(altMethod);
     }, false);
   };
-  self.proceedDownloadApk = function() {
+  self.proceedDownloadApk = function(altMethod) {
     var apkFileName = 'mdisplay-launcher-' + self.data.latestApkVersion + '.apk';
     var apkUrl = (isLocalhost ? 'http://192.168.1.199:8080/down/' : 'https://github.com/mdisplay' + (isDevDebugging ? '-stage' : '') + '/live/releases/download/' + self.data.latestApkVersion + '/')  + apkFileName;
 
     apkUrl = 'https://github.com/mdisplay/mdisplay-launcher-releases/archive/refs/heads/main.zip';
 
-    if(!window.ApkUpdater) {
+    if(altMethod || !window.ApkUpdater) {
       var fileTransferAvailable = window.FileTransfer;
       alert('Auto Updater not available. Please contact support for assistance in installing the latest APK.' + (fileTransferAvailable ? ' Downloading the Latest APK to "Downloads" folder...' : ''));
       if(!fileTransferAvailable || !window.zip) {
@@ -2164,11 +2164,13 @@ function App() {
             zipStatus.isError = false;
           }, 1000);
           alert('File downloaded successfully! Please use File Manager to install apk from "Download/mdisplay-launcher-releases-main"');
+          self.data.mdLauncher.download.readyToInstall = true;
           self.data.mdLauncher.download.progress = -1;
           //
         }, function (progressEvent) {
           var progressPercentage = Math.round(progressEvent.loaded / progressEvent.total * 100);
           zipStatus.status = 'Extracting zip... (' + progressPercentage + '%)';
+          self.data.mdLauncher.download.progress = progressPercentage;
           //
         });
     }
@@ -2253,8 +2255,31 @@ function App() {
     });
 
   };
-  self.installApk = function() {
+  self.installApk = function(altMethod) {
     if(self.data.latestApkVersion == self.data.mdLauncher.version && !confirm('Already using the latest version (' + self.data.latestApkVersion + ') Are you sure to re-install?')) {
+      return;
+    }
+
+    if(altMethod || !window.ApkUpdater) {
+      
+      // Ensure you use '_system' or '_blank' depending on platform behavior
+      var downloadsPath = cordova.file.externalRootDirectory + 'Download/';
+      var fileUrl = downloadsPath + 'mdisplay-launcher-releases-main/mdisplay-launcher-update.apk';
+
+      // const myBlob = new Blob(["Hello, world!"], { type: "text/plain" });
+      // const blobUrl = URL.createObjectURL(myBlob);
+
+      // fileURL = 'mdisplay-launcher-update.apk';
+      // fileUrl = 'test.txt';
+      // fileUrl = 'https://github.com/mdisplay/mdisplay-launcher-releases/raw/refs/heads/main/mdisplay-launcher-update.apk';
+      
+      // alert('ha1');
+      // var packageName = 'app.mdisplay.launcher';
+      // alert(packageName);
+      // window.open('intent:#Intent;action=android.settings.APPLICATION_DETAILS_SETTINGS;data=package:' + packageName + ';end', '_system');
+      // cordova.InAppBrowser.open('package:' + packageName, '_system', 'location=yes');
+
+      cordova.InAppBrowser.open(fileUrl, '_system', 'location=no,clearcache=yes');
       return;
     }
     ApkUpdater.install(console.log, function(err){ alert('Install Failed: ' + err); });

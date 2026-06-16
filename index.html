@@ -634,6 +634,15 @@
                   &middot;
                   <a href="#" @click="installApk()">Install Update ({{mdLauncher.download.name}})</a>
                 </span>
+                <br>
+                <div>
+                  <a v-if="!mdLauncher.download.readyToInstall" href="#" @click="downloadApkAltMethod()">(Method 2) Download Update ({{ latestApkVersion }})</a>
+                  <span v-if="!mdLauncher.download.readyToInstall && mdLauncher.download.progress > -1">({{mdLauncher.download.progress}}%)</span>
+                  <span v-if="mdLauncher.download.readyToInstall">
+                    &middot;
+                    <a href="#" @click="installApkAltMethod()">(Method 2) Install Update ({{mdLauncher.download.name}})</a>
+                  </span>
+                </div>
               </div>
 
               <div class="close-buttons-container">
@@ -1063,8 +1072,14 @@
             downloadApk: function() {
               return window.mdApp.downloadApk();
             },
+            downloadApkAltMethod: function() {
+              return window.mdApp.downloadApk(true);
+            },
             installApk: function() {
               return window.mdApp.installApk();
+            },
+            installApkAltMethod: function() {
+              return window.mdApp.installApk(true);
             },
             closeWifiScan: function() {
             },
