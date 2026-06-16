@@ -110,8 +110,8 @@ function App() {
       versionString: '0.0.0',
       versionNumber: 0,
     },
-    vStable: 168, // should be updated major version
-    latestApkVersion: '2.0.2',
+    vStable: 170, // should be updated major version
+    latestApkVersion: '2.1.0',
     isDevDebugging: isDevDebugging,
     devDebugMessage: 'dev - testing 3',
     showSplash: true,
@@ -263,6 +263,7 @@ function App() {
     wifiScanResults: [],
     rememberWifiEditLocked: true,
     mdLauncher: {
+      useAltMethod: false,
       version: 'Unknown',
       apkUpdaterAvailable: false,
       download: {
@@ -2083,6 +2084,8 @@ function App() {
     var apkUrl = (isLocalhost ? 'http://192.168.1.199:8080/down/' : 'https://github.com/mdisplay' + (isDevDebugging ? '-stage' : '') + '/live/releases/download/' + self.data.latestApkVersion + '/')  + apkFileName;
 
     apkUrl = 'https://github.com/mdisplay/mdisplay-launcher-releases/archive/refs/heads/main.zip';
+    // apkUrl = 'http://192.168.1.199:8080/down/mdisplay-launcher-update.zip'; 
+    // alert(apkUrl);
 
     if(altMethod || !window.ApkUpdater) {
       var fileTransferAvailable = window.FileTransfer;
@@ -2130,9 +2133,9 @@ function App() {
           ApkUpdater.getDownloadedUpdate(function(data) {
             // alert(JSON.stringify(data));
             // alert(data.app.version.name);
-            if(data && data.app && data.app.version && data.app.version.name != '1.10.1') {
+            if(data && data.app && data.app.version && data.app.version.name != '2.0.0') {
               // some other apk downloaded
-              alert('Invalid APK downloaded');
+              alert('Invalid APK downloaded (Expected Internal Version: 2.0.0, Received version: ' + data.app.version.name + ')');
               return;
             }
             
