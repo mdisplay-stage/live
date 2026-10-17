@@ -1,8 +1,0 @@
-/* Clock theme: Modern Digital */
-
-.clock-theme-digital-modern .digital-clock .time .hours .h,
-.clock-theme-digital-modern .digital-clock .time .colon-main,
-.clock-theme-digital-modern .digital-clock .time .minutes .m {
-  color: #00aaff;
-  opacity: 1;
-}

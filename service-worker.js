@@ -108,11 +108,11 @@ var precacheList = [
     revision: appVersion,
   },
   {
-    url: toUrl('assets/css/clock-theme-digital-modern.css'),
+    url: toUrl('assets/css/display-theme-digital-modern.css'),
     revision: appVersion,
   },
   {
-    url: toUrl('assets/css/clock-theme-analog-modern.css'),
+    url: toUrl('assets/css/display-theme-analog-modern.css'),
     revision: appVersion,
   },
   {

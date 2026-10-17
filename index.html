@@ -19,13 +19,13 @@
     <link rel="stylesheet" type="text/css" href="assets/analog-clock/analog-clock.css?v=2.19.0-173" />
     <link rel="stylesheet" type="text/css" href="assets/analog-clock/analog-clock-layout.css?v=2.19.0-173" />
     <link rel="stylesheet" type="text/css" href="assets/css/theme-default.css?v=2.19.0-173" />
-    <link rel="stylesheet" type="text/css" href="assets/css/clock-theme-digital-modern.css?v=2.19.0-173" />
-    <link rel="stylesheet" type="text/css" href="assets/css/clock-theme-analog-modern.css?v=2.19.0-173" />
+    <link rel="stylesheet" type="text/css" href="assets/css/display-theme-digital-modern.css?v=2.19.0-173" />
+    <link rel="stylesheet" type="text/css" href="assets/css/display-theme-analog-modern.css?v=2.19.0-173" />
   </head>
   <body>
     <div
       id="app"
-      :class="[{'is-showing-alert': showAlert, 'analog-clock-active': analogClockActive, 'is-active': currentPrayer, 'is-waiting': currentPrayerWaiting, 'is-before': currentPrayerBefore, 'is-after': currentPrayerAfter, 'focus-active-timer': currentPrayer && focusActiveTimer}, 'active-prayer-info-' + prayerInfo, 'clock-theme-' + activeClockTheme]"
+      :class="[{'is-showing-alert': showAlert, 'analog-clock-active': analogClockActive, 'is-active': currentPrayer, 'is-waiting': currentPrayerWaiting, 'is-before': currentPrayerBefore, 'is-after': currentPrayerAfter, 'focus-active-timer': currentPrayer && focusActiveTimer}, 'active-prayer-info-' + prayerInfo, 'display-theme-' + activeDisplayTheme]"
     >
     
       <div v-show="true" v-if="isDevDebugging" style="display: none; background: red; position: fixed; z-index: 999999999999;">{{ devDebugMessage }}</div>
@@ -407,26 +407,26 @@
                   </div>
                   <div class="config-item other-config" style="height: auto;">
                     <div>
-                      <small>Clock Theme</small>
+                      <small>Display Theme</small>
                       <small>
                         >
-                        <a href="#" @click="expanded.clockThemes = !expanded.clockThemes;">
-                          <span v-if="expanded.clockThemes">dismiss</span>
-                          <span v-else>{{ getSelected(clockThemes, activeClockTheme) }}</span>
+                        <a href="#" @click="expanded.displayThemes = !expanded.displayThemes;">
+                          <span v-if="expanded.displayThemes">dismiss</span>
+                          <span v-else>{{ getSelected(displayThemes, activeDisplayTheme) }}</span>
                         </a>
                       </small>
                     </div>
-                    <div v-if="expanded.clockThemes">
-                    <label v-for="clockTheme in clockThemes" :for="'clock-theme-select-' + clockTheme.id" style="display: block;">
+                    <div v-if="expanded.displayThemes">
+                    <label v-for="displayTheme in displayThemes" :for="'display-theme-select-' + displayTheme.id" style="display: block;">
                       <input
-                        :id="'clock-theme-select-' + clockTheme.id"
+                        :id="'display-theme-select-' + displayTheme.id"
                         type="radio"
-                        name="clock-theme-select"
-                        :value="clockTheme.id"
-                        v-model="activeClockTheme"
-                        @change="expanded.clockThemes = false; updateSettings()"
+                        name="display-theme-select"
+                        :value="displayTheme.id"
+                        v-model="activeDisplayTheme"
+                        @change="expanded.displayThemes = false; updateSettings()"
                       />
-                      {{ clockTheme.label }}
+                      {{ displayTheme.label }}
                       &nbsp;
                     </label>
                     </div>
