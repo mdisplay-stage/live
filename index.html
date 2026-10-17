@@ -19,11 +19,13 @@
     <link rel="stylesheet" type="text/css" href="assets/analog-clock/analog-clock.css?v=2.19.0-173" />
     <link rel="stylesheet" type="text/css" href="assets/analog-clock/analog-clock-layout.css?v=2.19.0-173" />
     <link rel="stylesheet" type="text/css" href="assets/css/theme-default.css?v=2.19.0-173" />
+    <link rel="stylesheet" type="text/css" href="assets/css/clock-theme-digital-modern.css?v=2.19.0-173" />
+    <link rel="stylesheet" type="text/css" href="assets/css/clock-theme-analog-modern.css?v=2.19.0-173" />
   </head>
   <body>
     <div
       id="app"
-      :class="[{'is-showing-alert': showAlert, 'analog-clock-active': analogClockActive, 'is-active': currentPrayer, 'is-waiting': currentPrayerWaiting, 'is-before': currentPrayerBefore, 'is-after': currentPrayerAfter, 'focus-active-timer': currentPrayer && focusActiveTimer}, 'active-prayer-info-' + prayerInfo, 'analog-clock-theme-' + analogClockTheme, 'digital-clock-theme-' + digitalClockTheme]"
+      :class="[{'is-showing-alert': showAlert, 'analog-clock-active': analogClockActive, 'is-active': currentPrayer, 'is-waiting': currentPrayerWaiting, 'is-before': currentPrayerBefore, 'is-after': currentPrayerAfter, 'focus-active-timer': currentPrayer && focusActiveTimer}, 'active-prayer-info-' + prayerInfo, 'clock-theme-' + activeClockTheme]"
     >
     
       <div v-show="true" v-if="isDevDebugging" style="display: none; background: red; position: fixed; z-index: 999999999999;">{{ devDebugMessage }}</div>

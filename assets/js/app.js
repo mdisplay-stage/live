@@ -183,11 +183,17 @@ function App() {
       { id: 'ZONE12', label: 'Zone 12: Galle & Matara District', type: 'NEW'},
       { id: 'ZONE13', label: 'Zone 13: Hambantota District', type: 'NEW'},
     ],
+    // Clock themes: each theme is a separate, self-contained identity.
+    // To add a theme: add a list entry below; optionally add images to
+    // assets/analog-clock/themes/<analogClockTheme>/ and CSS to
+    // assets/css/clock-theme-<id>.css (scoped by the clock-theme-<id> class).
+    //   analogClock: true -> shows the analog clock
+    //   analogClockTheme (optional): analog image folder, falls back to 'default'
     clockThemes: [
-      { id: 'digitalDefault', label: 'Classic Digital' },
-      { id: 'digitalModern', label: 'Modern Digital' },
-      { id: 'analogDefault', label: 'Classic Analog' },
-      { id: 'analogModern', label: 'Modern Analog' },
+      { id: 'digital-default', label: 'Classic Digital', analogClock: false },
+      { id: 'digital-modern', label: 'Modern Digital', analogClock: false },
+      { id: 'analog-default', label: 'Classic Analog', analogClock: true },
+      { id: 'analog-modern', label: 'Modern Analog', analogClock: true, analogClockTheme: 'modern' },
     ],
     timeOriginModes: [
       { id: 'auto', label: 'Auto (NTP first)' },
@@ -202,8 +208,7 @@ function App() {
     analogClockActive: false,
     alertEnabled: true,
     analogClockTheme: 'default',
-    digitalClockTheme: 'default',
-    activeClockTheme: 'digitalDefault',
+    activeClockTheme: 'digital-default',
     networkTimeInitialized: false,
     timeIsValid: false,
     timeFetchingMessage: undefined,
@@ -1398,28 +1403,7 @@ function App() {
       if (settings.enableArrowKeyScroll) {
         self.data.enableArrowKeyScroll = true;
       }
-      if (typeof settings.activeClockTheme2 === 'string') {
-        // self.data.activeClockTheme = settings.activeClockTheme2;
-        // switch (settings.activeClockTheme2) {
-        //   case 'digitalModern':
-        //     self.data.analogClockActive = false;
-        //     self.data.digitalClockTheme = 'modern';
-        //     break;
-        //   case 'analogDefault':
-        //     self.data.analogClockActive = true;
-        //     self.data.analogClockTheme = 'default';
-        //     break;
-        //   case 'analogModern':
-        //     self.data.analogClockActive = true;
-        //     self.data.analogClockTheme = 'modern';
-        //     break;
-        //   default:
-        //     // invalid or digitalDefault
-        //     self.data.analogClockActive = false;
-        //     self.data.digitalClockTheme = 'default';
-        //     break;
-        // }
-      }
+      self.applyClockTheme(self.getClockTheme(settings.activeClockTheme));
       // ...
     }
 
@@ -1436,8 +1420,7 @@ function App() {
       timeAdjustmentMinutes: self.data.timeAdjustmentMinutes,
       timeAdjustNew: self.data.timeAdjustNew,
       // analogClockActive: self.data.analogClockActive,
-      activeClockTheme: 'digitalDefault', // reset to default for possible later usage
-      activeClockTheme2: self.data.activeClockTheme,
+      activeClockTheme: self.data.activeClockTheme,
       alertEnabled: self.data.alertEnabled,
       focusActiveTimerNew1: self.data.focusActiveTimer,
       time24Format: self.data.time24Format,
@@ -2038,6 +2021,22 @@ function App() {
       return option.id == selectedId;
     })[0];
     return selected ? selected.label : 'Not Selected';
+  };
+  self.getClockTheme = function (id) {
+    for (var i = 0; i < self.data.clockThemes.length; i++) {
+      if (self.data.clockThemes[i].id === id) {
+        return self.data.clockThemes[i];
+      }
+    }
+    return undefined;
+  };
+  self.applyClockTheme = function (theme) {
+    if (!theme) {
+      theme = self.data.clockThemes[0];
+    }
+    self.data.activeClockTheme = theme.id;
+    self.data.analogClockActive = !!theme.analogClock;
+    self.data.analogClockTheme = theme.analogClockTheme || 'default';
   };
   self.deviceReady = function () {
     self.isDeviceReady = true;
