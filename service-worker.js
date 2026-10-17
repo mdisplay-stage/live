@@ -1,13 +1,13 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js');
 if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
+  console.log('Yay! Workbox is loaded 🎉');
 } else {
-  console.log(`Boo! Workbox didn't load 😬`);
+  console.log("Boo! Workbox didn't load 😬");
 }
 var baseUrl = '/live/';
 var appVersion = '2.19.0-173';
 var dataVersion = '10';
-var vendorVersion = '12';
+var vendorVersion = '13';
 var bgVersion = '9';
 
 // Detailed logging is very useful during development
@@ -108,20 +108,21 @@ var precacheList = [
     revision: appVersion,
   },
   {
-    url: toUrl('assets/css/display-theme-digital-modern.css'),
-    revision: appVersion,
-  },
-  {
-    url: toUrl('assets/css/display-theme-analog-modern.css'),
-    revision: appVersion,
-  },
-  {
     url: toUrl('assets/analog-clock/analog-clock-layout.css'),
     revision: appVersion,
   },
   // 'prayer-data-*.js',
   // 'assets/**/*.{css,js}',
 ];
+
+// display themes that ship their own CSS file
+var displayThemes = ['digital-modern', 'analog-modern'];
+for (var themeIndex = 0; themeIndex < displayThemes.length; themeIndex++) {
+  precacheList.push({
+    url: toUrl('assets/css/display-theme-' + displayThemes[themeIndex] + '.css'),
+    revision: vendorVersion,
+  });
+}
 
 var backgroundsList = [];
 for (var i = 0; i <= 59; i++) {
