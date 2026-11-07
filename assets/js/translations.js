@@ -96,7 +96,7 @@ window.translations = {
     ],
     'currentPrayerBefore': 'for Adhan',
     'currentPrayerWaiting': 'for Iqamath',
-    'currentPrayerAfter': 'passed Iqamath',
+    'currentPrayerAfter': 'Prayer',
     'Tarawih': 'Tarawih',
   },
   si: {
@@ -142,7 +142,7 @@ window.translations = {
     ],
     'currentPrayerBefore': 'for Adhan',
     'currentPrayerWaiting': 'for Iqamath',
-    'currentPrayerAfter': 'passed Iqamath',
+    'currentPrayerAfter': 'Prayer',
     'Tarawih': 'Tarawih',
   },
 };
