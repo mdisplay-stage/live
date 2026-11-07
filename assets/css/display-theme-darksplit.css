@@ -38,43 +38,41 @@
     line-height: normal;
   }
 
-  /* Date (top, centered in the left stage) */
+  /* Date: one compact line in the top-left band (hijri hidden) */
   #app.display-theme-darksplit .digital-clock .date-display {
     position: absolute;
-    top: 1.5rem;
-    left: 3rem;
+    top: 1.25rem;
+    left: 2rem;
     right: auto;
     width: auto;
     padding: 0;
-    /* transform: translateX(-50%); */
-    /* text-align: center; */
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    white-space: nowrap;
+    text-align: left;
   }
 
   #app.display-theme-darksplit .digital-clock .date-display .hijri-datex {
-    font-size: 1.5rem;
-    line-height: 1.8rem;
-    margin: 0;
-    color: #8f8f8f;
-    /* opacity: 1; */
     display: none;
   }
 
   #app.display-theme-darksplit .digital-clock .date-display .datex {
+    display: inline-block;
     font-size: 1.75rem;
-    line-height: 2rem;
+    line-height: 2.25rem;
     margin: 0;
     color: #f2f2f2;
-    /* opacity: 1; */
   }
 
   #app.display-theme-darksplit .digital-clock .date-display .weekday {
+    display: inline-block;
     font-size: 2.25rem;
-    line-height: 2.5rem;
-    color: #f2f2f2;
-    /* opacity: 1; */
+    line-height: 2.25rem;
+    margin: 0 0 0 1rem;
+    color: #8f8f8f;
   }
 
-  /* Big time (centered in the left stage) */
+  /* Big time (top of the left stage) */
   #app.display-theme-darksplit .digital-clock .time .hours {
     position: absolute;
     top: 0;
@@ -132,105 +130,92 @@
     /* opacity: 1; */
   }
 
-  /* Seconds + AM/PM (under the time, centered in the left stage) */
+  /* Seconds: small readout in the top-right band (AM/PM hidden) */
   #app.display-theme-darksplit .digital-clock .time .seconds-container {
     position: absolute;
-    top: calc(50% + 13.5vh);
-    /* left: 50%; */
-    right: 0;
+    top: 1.25rem;
+    left: auto;
+    right: 1.5rem;
     bottom: auto;
-    /* transform: translateX(-50%); */
-    text-align: center;
-
-    top: calc((100vw - 13rem - 4rem - 7rem - 4rem) / 2.28);
-    margin-top: -9rem;
-    right: 7rem;
+    transform: none;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    text-align: right;
   }
 
   #app.display-theme-darksplit .digital-clock .seconds {
     position: static;
     font-size: 2.25rem;
-    line-height: 2.5rem;
+    line-height: 2.25rem;
     opacity: 0.6;
     color: #f2f2f2;
   }
 
   #app.display-theme-darksplit .digital-clock .am-pm {
-    position: static;
-    font-size: 1.75rem;
-    line-height: 2.5rem;
-    opacity: 0.6;
-    color: #f2f2f2;
-    margin-left: 0.75rem;
-
-    position: absolute;
-    top: -4.5rem;
-    right: -2rem;
     display: none;
   }
 
-  /* Next/active prayer: stacked responsive times under the clock */
+  /* Bottom module block: prayer header + two 9rem time modules */
   #app.display-theme-darksplit .prayer-display {
     position: absolute;
-    top: calc(50% + 22vh);
+    top: auto;
     left: 0;
     right: 13rem;
+    bottom: 0.5rem;
+    height: 14rem;
     text-align: left;
-    top: auto;
-    bottom: 0;
   }
 
   #app.display-theme-darksplit .prayer-display .name {
     position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    bottom: auto;
     display: block;
-    /* font-size: 1.5rem; */
-    /* line-height: 1.5rem; */
+    height: 3rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
     margin: 0;
     color: #f2f2f2;
-    top: 0;
-    right: auto;
-
-    font-size: 2.5rem;
-    width: 12rem;
-    text-align: right;
-    top: auto;
-    bottom: 16rem;
+    opacity: 1;
+    text-align: left;
+    white-space: nowrap;
   }
 
   #app.display-theme-darksplit .prayer-display .name .label {
-    /* position: static; */
-    /* font-size: 1.25rem; */
-    /* line-height: 1.5rem; */
+    position: static;
+    font-size: 1.75rem;
+    line-height: 3rem;
     color: #8f8f8f;
-    margin-right: 0.5rem;
-    /* top: auto; */
-    /* right: auto; */
+    margin-right: 0.75rem;
+    top: auto;
+    right: auto;
   }
 
   #app.display-theme-darksplit .prayer-display .time,
   #app.display-theme-darksplit .prayer-display .iqamah-time {
-    position: static;
+    position: absolute;
+    bottom: 0;
+    height: 10.5rem;
+    padding: 1.5rem 0 0 0;
     display: block;
-    height: auto;
-    right: auto;
-    bottom: auto;
     font-size: 9rem;
     line-height: 9rem;
-    line-height: 9rem;
-    margin-top: -0.5rem;
     opacity: 1;
     white-space: nowrap;
-    float: left;
-    width: 50%;
     text-align: center;
-    border: 1px solid red;;
   }
 
   #app.display-theme-darksplit .prayer-display .time {
+    left: 0;
+    width: 50%;
     color: #7eff74;
   }
 
   #app.display-theme-darksplit .prayer-display .iqamah-time {
+    right: 0;
+    width: 50%;
     color: #ffeb3b;
   }
 
@@ -241,36 +226,23 @@
 
   #app.display-theme-darksplit .prayer-display .am-pm,
   #app.display-theme-darksplit .prayer-display .iqamah-am-pm {
-    position: static;
-    display: inline-block;
-    font-size: 1.5rem;
-    line-height: 1;
-    left: auto;
-    top: auto;
-    margin-left: 0.5rem;
-    color: inherit;
-    opacity: 0.75;
     display: none;
   }
 
   #app.display-theme-darksplit .prayer-display .time .label,
   #app.display-theme-darksplit .prayer-display .iqamah-time .iqamah-label {
-    position: static;
-    display: inline-block;
-    font-size: 1.5rem;
-    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
     width: auto;
-    left: auto;
-    top: auto;
-    margin-left: 0.6rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin: 0;
     color: #8f8f8f;
     opacity: 1;
-    text-align: left;
-    float: left;
-    width: 10rem;
-    text-align: right;
-    margin-top: 2rem;
-    padding-right: 1rem;
+    text-align: center;
   }
 
   /* Keep the base hiding behavior for active prayer states */
@@ -371,7 +343,7 @@
     color: #f2f2f2;
   }
 
-  /* Compact single-line countdown, docked at the viewport bottom */
+  /* Countdown module: fills the hidden time slot for the current phase */
   #app.display-theme-darksplit .active-timer,
   #app.display-theme-darksplit.is-before .active-timer,
   #app.display-theme-darksplit.is-waiting .active-timer,
@@ -379,64 +351,54 @@
     position: absolute;
     left: 0;
     right: 13rem;
-    bottom: -1rem;
+    bottom: 0.5rem;
+    height: 10.5rem;
+    padding: 1.5rem 0 0 0;
     text-align: center;
-    padding: 0.4rem 0;
+  }
+
+  #app.display-theme-darksplit.is-before .active-timer {
+    left: 24.75rem;
+    right: 13rem;
+  }
+
+  #app.display-theme-darksplit.is-waiting .active-timer,
+  #app.display-theme-darksplit.is-after .active-timer {
+    left: 0;
+    right: 37.75rem;
   }
 
   #app.display-theme-darksplit .active-timer .time {
     display: inline-block;
     font-size: 9rem;
-    height: auto;
-    line-height: 2.5rem;
+    height: 9rem;
+    line-height: 9rem;
     color: #fc7878;
   }
 
   #app.display-theme-darksplit .active-timer .time .colon {
-    width: auto;
+    width: 3rem;
     min-height: 0;
     margin: 0 0.15rem;
-    width: 3rem;
   }
 
   #app.display-theme-darksplit .active-timer .description {
-    display: inline-block;
-    font-size: 1rem;
-    line-height: 1.25rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     color: #8f8f8f;
-    margin-top: 0;
-    margin-left: 1rem;
+    margin: 0;
+    text-align: center;
     opacity: 1;
   }
 
-
-  #app.display-theme-darksplit .active-timer, #app.display-theme-darksplit.is-before .active-timer {
-    bottom: -1rem;
-  }
-
-  #app.display-theme-darksplit.is-waiting .active-timer, #app.display-theme-darksplit.is-after .active-timer {
-    bottom: 8.5rem;
-  }
-
-  /* Alert icon */
+  /* Alert icon: no free slot in this layout */
   #app.display-theme-darksplit .alert-container {
-    position: absolute;
-    left: 2rem;
-    top: 2rem;
-    width: 8rem;
-    height: 8rem;
-  }
-
-  #app.display-theme-darksplit .digital-clock .date-display .alert-container {
-    left: auto;
-    top: 0;
-    right: 100%;
-    margin-right: 2rem;
-  }
-
-  #app.display-theme-darksplit.focus-active-timer .alert-container {
-    left: 2rem !important;
-    top: 2rem !important;
+    display: none;
   }
 
   /* Focus-timer mode: keep the split layout */
