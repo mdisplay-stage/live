@@ -1,0 +1,406 @@
+/* Display theme: Dark Split (landscape only; the default theme remains the portrait layout) */
+
+@media (orientation: landscape) {
+
+  /* Canvas & background */
+  #app.display-theme-darksplit {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #f2f2f2;
+  }
+
+  #app.display-theme-darksplit #bgful .bgful-overlay {
+    background: #000;
+  }
+
+  #app.display-theme-darksplit #bgful .bgful-image {
+    display: none;
+  }
+
+  /* Left stage: clock, date, prayer line and countdown live here */
+  #app.display-theme-darksplit .digital-clock {
+    position: absolute;
+    top: 0;
+    right: 13rem;
+    bottom: 0;
+    left: 0;
+  }
+
+  #app.display-theme-darksplit .digital-clock .time {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    line-height: normal;
+  }
+
+  /* Date (top, centered in the left stage) */
+  #app.display-theme-darksplit .digital-clock .date-display {
+    position: absolute;
+    top: 2.5rem;
+    left: 50%;
+    right: auto;
+    width: auto;
+    padding: 0;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  #app.display-theme-darksplit .digital-clock .date-display .hijri-datex {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    margin: 0;
+    color: #8f8f8f;
+    opacity: 1;
+  }
+
+  #app.display-theme-darksplit .digital-clock .date-display .datex {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    margin: 0;
+    color: #f2f2f2;
+    opacity: 1;
+  }
+
+  #app.display-theme-darksplit .digital-clock .date-display .weekday {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    color: #f2f2f2;
+    opacity: 1;
+  }
+
+  /* Big time (centered in the left stage) */
+  #app.display-theme-darksplit .digital-clock .time .hours {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    line-height: normal;
+  }
+
+  #app.display-theme-darksplit .digital-clock .time .hours .h {
+    position: absolute;
+    top: 50%;
+    right: calc(50% + 3.5rem);
+    transform: translateY(-50%);
+    font-size: 24vw;
+    font-size: calc((100vw - 13rem - 4rem - 7rem - 4rem) / 2.28);
+    line-height: 1;
+    color: #f2f2f2;
+  }
+
+  #app.display-theme-darksplit .digital-clock .time .minutes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    line-height: normal;
+  }
+
+  #app.display-theme-darksplit .digital-clock .time .minutes .m {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 3.5rem);
+    transform: translateY(-50%);
+    font-size: 24vw;
+    font-size: calc((100vw - 13rem - 4rem - 7rem - 4rem) / 2.28);
+    line-height: 1;
+    color: #f2f2f2;
+  }
+
+  #app.display-theme-darksplit .digital-clock .time .colon-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    font-size: 24vw;
+    font-size: calc((100vw - 13rem - 4rem - 7rem - 4rem) / 2.28);
+    line-height: 1;
+    margin: 0;
+    color: #f2f2f2;
+    opacity: 1;
+  }
+
+  /* Seconds + AM/PM (under the time, centered in the left stage) */
+  #app.display-theme-darksplit .digital-clock .time .seconds-container {
+    position: absolute;
+    top: calc(50% + 13.5vh);
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  #app.display-theme-darksplit .digital-clock .seconds {
+    position: static;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    opacity: 0.6;
+    color: #f2f2f2;
+  }
+
+  #app.display-theme-darksplit .digital-clock .am-pm {
+    position: static;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    opacity: 0.6;
+    color: #f2f2f2;
+    margin-left: 0.75rem;
+  }
+
+  /* Next/active prayer: stacked responsive times under the clock */
+  #app.display-theme-darksplit .prayer-display {
+    position: absolute;
+    top: calc(50% + 22vh);
+    left: 0;
+    right: 13rem;
+    text-align: center;
+  }
+
+  #app.display-theme-darksplit .prayer-display .name {
+    position: static;
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin: 0;
+    color: #f2f2f2;
+    opacity: 1;
+  }
+
+  #app.display-theme-darksplit .prayer-display .name .label {
+    position: static;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #8f8f8f;
+    margin-right: 0.5rem;
+    top: auto;
+    right: auto;
+  }
+
+  #app.display-theme-darksplit .prayer-display .time,
+  #app.display-theme-darksplit .prayer-display .iqamah-time {
+    position: static;
+    display: block;
+    height: auto;
+    right: auto;
+    bottom: auto;
+    font-size: 5vw;
+    line-height: 5vw;
+    opacity: 1;
+    white-space: nowrap;
+  }
+
+  #app.display-theme-darksplit .prayer-display .time {
+    color: #7eff74;
+  }
+
+  #app.display-theme-darksplit .prayer-display .iqamah-time {
+    color: #ffeb3b;
+  }
+
+  #app.display-theme-darksplit .prayer-display .time.is-sunrise,
+  #app.display-theme-darksplit .prayer-display .is-sunrise .am-pm {
+    color: #ff8f00;
+  }
+
+  #app.display-theme-darksplit .prayer-display .am-pm,
+  #app.display-theme-darksplit .prayer-display .iqamah-am-pm {
+    position: static;
+    display: inline-block;
+    font-size: 1.5rem;
+    line-height: 1;
+    left: auto;
+    top: auto;
+    margin-left: 0.5rem;
+    color: inherit;
+    opacity: 0.75;
+  }
+
+  #app.display-theme-darksplit .prayer-display .time .label,
+  #app.display-theme-darksplit .prayer-display .iqamah-time .iqamah-label {
+    position: static;
+    display: inline-block;
+    font-size: 1.25rem;
+    line-height: 1;
+    width: auto;
+    left: auto;
+    top: auto;
+    margin-left: 0.6rem;
+    color: #8f8f8f;
+    opacity: 1;
+    text-align: left;
+  }
+
+  /* Keep the base hiding behavior for active prayer states */
+  #app.display-theme-darksplit.is-waiting .active-prayer .time,
+  #app.display-theme-darksplit.is-waiting .active-prayer .am-pm,
+  #app.display-theme-darksplit.is-after .active-prayer .time,
+  #app.display-theme-darksplit.is-after .active-prayer .am-pm,
+  #app.display-theme-darksplit.is-before .active-prayer .iqamah-time,
+  #app.display-theme-darksplit.is-before .active-prayer .iqamah-am-pm {
+    display: none;
+  }
+
+  /* Right column: prayer timetable */
+  #app.display-theme-darksplit .prayer-info-container {
+    position: absolute;
+    top: -1.5rem;
+    right: 0;
+    bottom: -6rem;
+    left: auto;
+    width: calc(4rem * 2.5 + 3rem);
+    height: auto;
+    background: #141414;
+    border-left: 1px solid #2a2a2a;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 6rem;
+    margin-bottom: 0.4rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 0.5rem solid transparent;
+    overflow: hidden;
+    transition: all 300ms;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(even) {
+    background: transparent;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-name {
+    position: static;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    height: auto;
+    margin: 0;
+    background: transparent;
+    opacity: 1;
+    color: #8f8f8f;
+    text-align: left;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info .prayer-time,
+  #app.display-theme-darksplit .prayer-info-container .prayer-info .iqamah-time {
+    top: 1.6rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 4rem;
+    white-space: nowrap;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-time {
+    color: #7eff74;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .iqamah-time {
+    color: #ffeb3b;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .is-sunrise .iqamah-time {
+    color: #ff8f00;
+  }
+
+  /* Current row highlight follows the athan/iqamah phase (dark tints) */
+  #app.display-theme-darksplit.active-prayer-info-athan .prayer-info-container .prayer-info.is-current {
+    background: rgba(126, 255, 116, 0.12);
+    border-left-color: #7eff74;
+  }
+
+  #app.display-theme-darksplit.active-prayer-info-iqamah .prayer-info-container .prayer-info.is-current {
+    background: rgba(255, 235, 59, 0.1);
+    border-left-color: #ffeb3b;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info.is-current .prayer-name {
+    color: #f2f2f2;
+  }
+
+  /* Compact single-line countdown, docked at the viewport bottom */
+  #app.display-theme-darksplit .active-timer,
+  #app.display-theme-darksplit.is-before .active-timer,
+  #app.display-theme-darksplit.is-waiting .active-timer,
+  #app.display-theme-darksplit.is-after .active-timer {
+    position: absolute;
+    left: 0;
+    right: 13rem;
+    bottom: -6rem;
+    text-align: center;
+    padding: 0.4rem 0;
+  }
+
+  #app.display-theme-darksplit .active-timer .time {
+    display: inline-block;
+    font-size: 2.25rem;
+    height: auto;
+    line-height: 2.5rem;
+    color: #fc7878;
+  }
+
+  #app.display-theme-darksplit .active-timer .time .colon {
+    width: auto;
+    min-height: 0;
+    margin: 0 0.15rem;
+  }
+
+  #app.display-theme-darksplit .active-timer .description {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: #8f8f8f;
+    margin-top: 0;
+    margin-left: 1rem;
+    opacity: 1;
+  }
+
+  /* Alert icon */
+  #app.display-theme-darksplit .alert-container {
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    width: 8rem;
+    height: 8rem;
+  }
+
+  #app.display-theme-darksplit .digital-clock .date-display .alert-container {
+    left: auto;
+    top: 0;
+    right: 100%;
+    margin-right: 2rem;
+  }
+
+  #app.display-theme-darksplit.focus-active-timer .alert-container {
+    left: 2rem !important;
+    top: 2rem !important;
+  }
+
+  /* Focus-timer mode: keep the split layout */
+  #app.display-theme-darksplit.focus-active-timer .prayer-info-container,
+  #app.display-theme-darksplit.focus-active-timer .digital-clock .date-display {
+    opacity: 1 !important;
+  }
+
+  #app.display-theme-darksplit.is-showing-alert.focus-active-timer .digital-clock .seconds-container {
+    opacity: 1 !important;
+  }
+
+}

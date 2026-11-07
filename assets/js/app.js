@@ -113,7 +113,7 @@ function App() {
     vStable: 173, // should be updated major version
     latestApkVersion: '2.1.1',
     isDevDebugging: isDevDebugging,
-    devDebugMessage: 'dev - testing 3',
+    devDebugMessage: '',
     showSplash: true,
     // currentPrayerWaiting: false,
     // time: new Date(),
@@ -194,6 +194,7 @@ function App() {
       { id: 'digital-modern', label: 'Modern Digital', analogClock: false },
       { id: 'analog-default', label: 'Classic Analog', analogClock: true },
       { id: 'analog-modern', label: 'Modern Analog', analogClock: true, analogClockTheme: 'modern' },
+      { id: 'darksplit', label: 'Dark Split', analogClock: false },
     ],
     timeOriginModes: [
       { id: 'auto', label: 'Auto (NTP first)' },
@@ -2056,7 +2057,7 @@ function App() {
       setTimeout(function() {
         window.plugins.bringtofront();
       }, 10 * 1000);
-    } else {
+    } else if(window.cordova) {
       self.data.devDebugMessage = 'bringtofront NOT available!';
     }
   };

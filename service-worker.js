@@ -116,7 +116,7 @@ var precacheList = [
 ];
 
 // display themes that ship their own CSS file
-var displayThemes = ['digital-modern', 'analog-modern'];
+var displayThemes = ['digital-modern', 'analog-modern', 'darksplit'];
 for (var themeIndex = 0; themeIndex < displayThemes.length; themeIndex++) {
   precacheList.push({
     url: toUrl('assets/css/display-theme-' + displayThemes[themeIndex] + '.css'),
