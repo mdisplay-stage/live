@@ -252,10 +252,15 @@
     display: none;
   }
 
+
+  #app.display-theme-darksplit #version-info {
+    right: 12rem !important;
+  }
+
   /* Right column: prayer timetable */
   #app.display-theme-darksplit .prayer-info-container {
     position: absolute;
-    top: -1.5rem;
+    top: 0;
     right: 0;
     bottom: -6rem;
     left: auto;
@@ -265,7 +270,7 @@
     border-left: 1px solid #2a2a2a;
     font-size: 1.5rem;
     line-height: 1.5rem;
-    padding: 1rem 0;
+    padding: 2rem 0 0 0;
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info {
