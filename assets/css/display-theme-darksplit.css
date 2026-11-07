@@ -331,9 +331,20 @@
     display: none;
   }
 
+  #app.display-theme-darksplit .prayer-times-applied-indicator-new {
+    display: none;
+  }
 
   #app.display-theme-darksplit #version-info {
-    right: 12rem !important;
+    right: 13rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  #app.display-theme-darksplit #version-info .version-text {
+    display: block !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin-right: -0.25rem !important;
   }
 
   /* Right column: prayer timetable (five equal 20vh bands) */
