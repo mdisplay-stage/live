@@ -220,6 +220,10 @@
     margin-top: -0.5rem;
     opacity: 1;
     white-space: nowrap;
+    float: left;
+    width: 50%;
+    text-align: center;
+    border: 1px solid red;;
   }
 
   #app.display-theme-darksplit .prayer-display .time {
