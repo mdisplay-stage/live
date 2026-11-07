@@ -194,7 +194,7 @@ function App() {
       { id: 'digital-modern', label: 'Modern Digital', analogClock: false },
       { id: 'analog-default', label: 'Classic Analog', analogClock: true },
       { id: 'analog-modern', label: 'Modern Analog', analogClock: true, analogClockTheme: 'modern' },
-      { id: 'darksplit', label: 'Dark Split', analogClock: false },
+      { id: 'darksplit', label: 'Darksplit Aurora', analogClock: false },
     ],
     timeOriginModes: [
       { id: 'auto', label: 'Auto (NTP first)' },
