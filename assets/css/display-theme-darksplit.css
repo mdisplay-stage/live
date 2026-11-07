@@ -547,8 +547,8 @@
     height: 0.5rem;
     transform: translateY(-50%);
     border-radius: 50%;
-    box-shadow: 0 0 1.2rem rgba(127, 216, 255, 0.8);
-    background: #bfeaff;
+    /* box-shadow: 0 0 1.2rem rgba(127, 216, 255, 0.8);
+    background: #bfeaff; */
   }
 
   #app.display-theme-darksplit .branding-bar::after {
