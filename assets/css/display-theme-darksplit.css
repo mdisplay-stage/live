@@ -38,38 +38,51 @@
     line-height: normal;
   }
 
-  /* Date: one compact line in the top-left band (hijri hidden) */
+  /* Date: two centered lines below the clock (Gregorian + weekday, then Hijri) */
   #app.display-theme-darksplit .digital-clock .date-display {
     position: absolute;
-    top: 1.25rem;
-    left: 2rem;
-    right: auto;
+    top: 16.3rem;
+    left: 0;
+    right: 0;
     width: auto;
     padding: 0;
     font-size: 1.75rem;
-    line-height: 2.25rem;
+    line-height: 2rem;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
+
+    padding-right: 6.5rem;
+    padding-top: 1rem;
+    text-align: right;
   }
 
   #app.display-theme-darksplit .digital-clock .date-display .hijri-datex {
-    display: none;
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    margin: 0;
+    color: #8f8f8f;
   }
 
   #app.display-theme-darksplit .digital-clock .date-display .datex {
     display: inline-block;
     font-size: 1.75rem;
-    line-height: 2.25rem;
+    line-height: 2rem;
     margin: 0;
     color: #f2f2f2;
+
+    float: right;
+    margin-left: 0.75rem;
   }
 
   #app.display-theme-darksplit .digital-clock .date-display .weekday {
     display: inline-block;
-    font-size: 2.25rem;
-    line-height: 2.25rem;
-    margin: 0 0 0 1rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
+    margin: 0 0 0 0.75rem;
     color: #8f8f8f;
+
+    float: right;
   }
 
   /* Big time (top of the left stage) */
@@ -216,6 +229,8 @@
     opacity: 1;
     text-align: left;
     white-space: nowrap;
+    top: auto;
+    bottom: 14rem;
   }
 
   #app.display-theme-darksplit .prayer-display .name .label {
@@ -226,6 +241,7 @@
     margin-right: 0.75rem;
     top: auto;
     right: auto;
+    display: block;
   }
 
   #app.display-theme-darksplit .prayer-display .time,
@@ -415,6 +431,8 @@
     width: 3rem;
     min-height: 0;
     margin: 0 0.15rem;
+    width: auto;
+    margin: 0;
   }
 
   #app.display-theme-darksplit .active-timer .description {

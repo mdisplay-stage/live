@@ -872,7 +872,7 @@
               <div class="time">
                 <!-- {{ currentPrayerBefore }} -->
                 <span class="minutes">{{ currentPrayerBefore.minutes }}</span
-                ><span class="colon">{{ currentPrayerBefore.colon }}</span
+                ><span class="colon"><span v-if="currentPrayerBefore.colon == ''">&nbsp;</span><span v-else>{{ currentPrayerBefore.colon }}</span></span
                 ><span class="seconds">{{ currentPrayerBefore.seconds }}</span>
               </div>
               <div class="description">{{ currentPrayerDescription }}</div>
@@ -881,7 +881,7 @@
               <div class="time">
                 <!-- {{ currentPrayerAfter }} -->
                 <span class="minutes">{{ currentPrayerAfter.minutes }}</span
-                ><span class="colon">{{ currentPrayerAfter.colon }}</span
+                ><span class="colon"><span v-if="currentPrayerAfter.colon == ''">&nbsp;</span><span v-else></span>{{ currentPrayerAfter.colon }}</span></span
                 ><span class="seconds">{{ currentPrayerAfter.seconds }}</span>
               </div>
               <div class="description">{{ currentPrayerDescription }}</div>
@@ -890,7 +890,7 @@
               <div class="time">
                 <!-- {{ currentPrayerWaiting }} -->
                 <span class="minutes">{{ currentPrayerWaiting.minutes }}</span
-                ><span class="colon">{{ currentPrayerWaiting.colon }}</span
+                ><span class="colon"><span v-if="currentPrayerWaiting.colon == ''">&nbsp;</span><span v-else></span>{{ currentPrayerWaiting.colon }}</span></span
                 ><span class="seconds">{{ currentPrayerWaiting.seconds }}</span>
               </div>
               <div class="description">{{ currentPrayerDescription }}</div>
