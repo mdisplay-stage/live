@@ -316,6 +316,20 @@ function App() {
       return self.data.nextPrayer && self.data.nextPrayer.name == 'Isha' && self.data.tarawihEnabled && self.data.prayers[6] 
       && (self.data.showSunriseNow);
     },
+    secondsRingOffset: function () {
+      var seconds = parseInt(self.data.timeDisplaySeconds, 10);
+      if (isNaN(seconds)) {
+        seconds = 0;
+      }
+      return (2 * Math.PI * 28) * (1 - seconds / 60);
+    },
+    secondsRingAngle: function () {
+      var seconds = parseInt(self.data.timeDisplaySeconds, 10);
+      if (isNaN(seconds)) {
+        seconds = 0;
+      }
+      return seconds * 6;
+    },
   };
 
   self.showToast = function (message, duration) {
