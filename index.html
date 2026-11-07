@@ -763,6 +763,9 @@
         <div v-if="currentPrayer && focusActiveTimer" class="alert-container" :style="{opacity: showAlert ? '1' : '0'}">
           <img :src="'assets/images/' + currentlyShowingAlert">
         </div>
+        <div class="branding-bar" v-if="activeDisplayTheme == 'darksplit'">
+          <span class="masjid-name">{{ masjidName }}</span>
+        </div>
         <div class="digital-clock" v-if="timeIsValid">
           <span class="time">
             <span class="hours"
@@ -935,8 +938,8 @@
 
         <div class="prayer-info-container" v-if="timeIsValid">
           <div class="prayer-info" v-for="prayer in prayersListDisplay" :class="{'is-current': prayer === currentPrayer, 'is-sunrise': (prayer.name == 'Subah' && showSunriseNow) || tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseNow}">
-            <div v-if="tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseLabel" class="prayer-name" style="background-color: #7b4c12; color: #FFF;">{{ translate('Tarawih') }}</div>
-              <div v-else-if="prayer.name == 'Subah' && showSunriseLabel" class="prayer-name" style="background-color: #7b4c12; color: #FFF;">{{ translate('Sunrise') }}</div>
+            <div v-if="tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseLabel" class="prayer-name is-sunrise-label" style="background-color: #7b4c12; color: #FFF;">{{ translate('Tarawih') }}</div>
+              <div v-else-if="prayer.name == 'Subah' && showSunriseLabel" class="prayer-name is-sunrise-label" style="background-color: #7b4c12; color: #FFF;">{{ translate('Sunrise') }}</div>
             <div v-else class="prayer-name">{{ prayer.nameDisplay }}</div>
             <!-- <transition name="fade" mode="out-in"> -->
             <div class="prayer-time" xv-if="prayerInfo == 'athan'">

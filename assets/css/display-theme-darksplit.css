@@ -19,6 +19,25 @@
     display: none;
   }
 
+  /* Branding bar: top-left section, styled like the right rail */
+  #app.display-theme-darksplit .branding-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 13rem;
+    height: 3.25rem;
+    background: #17191b;
+    border-bottom: 1px solid #2a2a2a;
+    text-align: center;
+    line-height: 3.25rem;
+  }
+
+  #app.display-theme-darksplit .branding-bar .masjid-name {
+    font-size: 1.75rem;
+    letter-spacing: 0.05em;
+    color: #f2f2f2;
+  }
+
   /* Left stage: clock, date, prayer line and countdown live here */
   #app.display-theme-darksplit .digital-clock {
     position: absolute;
@@ -311,12 +330,12 @@
     right: 12rem !important;
   }
 
-  /* Right column: prayer timetable */
+  /* Right column: prayer timetable (five equal 20vh bands) */
   #app.display-theme-darksplit .prayer-info-container {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: -6rem;
+    bottom: 0;
     left: auto;
     width: calc(4rem * 2.5 + 3rem);
     height: auto;
@@ -324,40 +343,67 @@
     border-left: 1px solid #2a2a2a;
     font-size: 1.5rem;
     line-height: 1.5rem;
-    padding: 2rem 0 0 0;
+    padding: 0;
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info {
     display: block;
     position: relative;
     width: 100%;
-    height: 6rem;
-    margin-bottom: 0.4rem;
-    padding: 0.5rem 0.75rem;
-    border-left: 0.5rem solid transparent;
+    height: 20vh;
+    margin-bottom: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
     overflow: hidden;
     transition: all 300ms;
   }
 
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(even) {
-    background: transparent;
+  /* Prayer-period tints: dawn, noon, afternoon, sunset, night */
+  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(1) {
+    background: #17131a;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(2) {
+    background: #181713;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(3) {
+    background: #191610;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(4) {
+    background: #1a1211;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(5) {
+    background: #111319;
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-name {
     position: static;
-    font-size: 1.1rem;
-    line-height: 1.3rem;
-    height: auto;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
     margin: 0;
-    background: transparent;
+    padding: 0 0.6rem;
+    background: rgba(255, 255, 255, 0.055);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     opacity: 1;
     color: #8f8f8f;
-    text-align: left;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .prayer-name.is-sunrise-label {
+    background-color: rgba(123, 76, 18, 0.55) !important;
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info .prayer-time,
   #app.display-theme-darksplit .prayer-info-container .prayer-info .iqamah-time {
-    top: 1.6rem;
+    top: calc(10vh - 1rem);
     left: 0.75rem;
     right: 0.75rem;
     width: auto;

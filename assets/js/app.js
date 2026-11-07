@@ -210,6 +210,7 @@ function App() {
     alertEnabled: true,
     analogClockTheme: 'default',
     activeDisplayTheme: 'digital-default',
+    masjidName: localStorage.getItem('mdisplay.masjidName') || 'Masjid Al-Noor',
     networkTimeInitialized: false,
     timeIsValid: false,
     timeFetchingMessage: undefined,
