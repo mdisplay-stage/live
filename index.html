@@ -831,7 +831,7 @@
         {type: 'next', name: 'nextPrayer', prayer: nextPrayer}
       ]"
           >
-            <div :class="[display.type + '-prayer', 'prayer-display', 'prayer-color-' + display.prayer.name.toLowerCase()]" v-if="display.prayer">
+            <div :class="[display.type + '-prayer', 'prayer-display']" v-if="display.prayer">
               <span class="name"
                 ><span class="label">
                   <span v-if="display.type == 'next' && showTarawihNext">&nbsp;</span>
@@ -847,7 +847,7 @@
                 <small class="label" v-if="display.prayer.name != 'Sunrise'">{{ translate('prayer.label') }}</small>
               </span>
               <!-- <small class="am-pm">{{ display.prayer.timeAmPm }}</small> -->
-              <span class="iqamah-time" v-if="display.prayer.name != 'Sunrise'" :style="display.prayer.name == 'Tarawih' || (display.type == 'next' && showTarawihNext) ? [{'display': 'block'}, currentPrayerWaiting || currentPrayerAfter ? {} : {bottom:  '8.5rem'}] : {}">
+              <span class="iqamah-time" :class="{'showing-tarawih': display.prayer.name == 'Tarawih' || (display.type == 'next' && showTarawihNext)}" v-if="display.prayer.name != 'Sunrise'" :style="display.prayer.name == 'Tarawih' || (display.type == 'next' && showTarawihNext) ? [{'display': 'block'}, currentPrayerWaiting || currentPrayerAfter ? {} : {bottom:  '8.5rem'}] : {}">
                 <span class="hours">
                   <span v-if="display.type == 'next' && showTarawihNext">{{ prayers[6].iqamahTimeHours }}</span>
                   <span v-else>{{ display.prayer.iqamahTimeHours }}</span>
@@ -870,7 +870,7 @@
       </div>
     </div> -->
         <template v-if="timeIsValid">
-          <div class="active-timer" v-if="currentPrayer">
+          <div class="active-timer" :class="{'is-tarawih': currentPrayer.name == 'Tarawih'}" v-if="currentPrayer">
             <div class="timer timer-is-before" v-if="currentPrayerBefore" :style="currentPrayer.name == 'Tarawih' ? {display: 'none'} : {}">
               <div class="time">
                 <!-- {{ currentPrayerBefore }} -->
@@ -937,7 +937,7 @@
         </div>
 
         <div class="prayer-info-container" v-if="timeIsValid">
-          <div class="prayer-info" v-for="prayer in prayersListDisplay" :class="{'is-current': prayer === currentPrayer, 'is-sunrise': (prayer.name == 'Subah' && showSunriseNow) || tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseNow}">
+          <div class="prayer-info" v-for="prayer in prayersListDisplay" :class="{'is-current': prayer === currentPrayer, 'is-sunrise': (prayer.name == 'Subah' && showSunriseNow) || tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseNow, 'is-tarawih': tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseNow}">
             <div v-if="tarawihEnabled && prayers[6] && prayer.name == 'Isha' && showSunriseLabel" class="prayer-name is-sunrise-label" style="background-color: #7b4c12; color: #FFF;">{{ translate('Tarawih') }}</div>
               <div v-else-if="prayer.name == 'Subah' && showSunriseLabel" class="prayer-name is-sunrise-label" style="background-color: #7b4c12; color: #FFF;">{{ translate('Sunrise') }}</div>
             <div v-else class="prayer-name">{{ prayer.nameDisplay }}</div>

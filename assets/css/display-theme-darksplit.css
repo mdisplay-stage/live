@@ -349,6 +349,7 @@
     border-radius: 0 !important;
     padding: 0 !important;
     margin-right: -0.25rem !important;
+    background: rgba(0, 0, 0, 0.3) !important;
   }
 
   /* Right column: prayer timetable (five equal 20vh bands) */
@@ -517,9 +518,25 @@
   }
 
   #app.display-theme-darksplit .prayer-info-container .is-sunrise .iqamah-time {
-    /* color: #ed7bff; */
-    color: #fff;
+    color: #FF8F00;
+    /* color: #fff; */
     text-shadow: 0 0 1.4rem rgba(255, 143, 0, 0.3);
+  }
+
+  #app.display-theme-darksplit .prayer-info-container .is-tarawih .iqamah-time {
+    color: #c391ff !important;
+  }
+
+  #app.display-theme-darksplit .prayer-display .iqamah-time.showing-tarawih {
+    bottom: 0 !important;
+    color: #c391ff !important;
+    left: 0;
+  }
+
+  #app.display-theme-darksplit.is-waiting .active-timer.is-tarawih,
+  #app.display-theme-darksplit.is-after .active-timer.is-tarawih {
+    left: 24.75rem;
+    right: 13rem;
   }
 
   /* Current row highlight follows the athan/iqamah phase (dark tints) */
@@ -566,7 +583,7 @@
     height: 9rem;
     line-height: 9rem;
     color: #fc7878;
-    color: #7fd8ff;
+    /* color: #7fd8ff; */
   }
 
   #app.display-theme-darksplit .active-timer .time .colon {
@@ -702,135 +719,6 @@
 
   #app.display-theme-darksplit .active-timer .time {
     text-shadow: 0 0 2.5rem rgba(252, 120, 120, 0.12);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(1) .prayer-time {
-    color: #bef264;
-    text-shadow: 0 0 1.4rem rgba(163, 230, 53, 0.35);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(1) .iqamah-time {
-    color: #d9f99d;
-    text-shadow: 0 0 1.4rem rgba(163, 230, 53, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(2) .prayer-time {
-    color: #fbbf24;
-    text-shadow: 0 0 1.4rem rgba(251, 191, 36, 0.35);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(2) .iqamah-time {
-    color: #fde68a;
-    text-shadow: 0 0 1.4rem rgba(251, 191, 36, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(3) .prayer-time {
-    color: #f472b6;
-    text-shadow: 0 0 1.4rem rgba(244, 114, 182, 0.35);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(3) .iqamah-time {
-    color: #fbcfe8;
-    text-shadow: 0 0 1.4rem rgba(244, 114, 182, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(4) .prayer-time {
-    color: #fb7185;
-    text-shadow: 0 0 1.4rem rgba(251, 113, 133, 0.35);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(4) .iqamah-time {
-    color: #fecdd3;
-    text-shadow: 0 0 1.4rem rgba(251, 113, 133, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(5) .prayer-time {
-    color: #818cf8;
-    text-shadow: 0 0 1.4rem rgba(129, 140, 248, 0.35);
-  }
-
-  #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(5) .iqamah-time {
-    color: #c7d2fe;
-    text-shadow: 0 0 1.4rem rgba(129, 140, 248, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-subah .name,
-  #app.display-theme-darksplit .prayer-display.prayer-color-sunrise .name {
-    color: #bef264;
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-subah .time,
-  #app.display-theme-darksplit .prayer-display.prayer-color-sunrise .time {
-    color: #bef264;
-    text-shadow: 0 0 2.5rem rgba(163, 230, 53, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-subah .iqamah-time,
-  #app.display-theme-darksplit .prayer-display.prayer-color-sunrise .iqamah-time {
-    color: #d9f99d;
-    text-shadow: 0 0 2.5rem rgba(163, 230, 53, 0.2);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-luhar .name,
-  #app.display-theme-darksplit .prayer-display.prayer-color-jummah .name {
-    color: #fbbf24;
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-luhar .time,
-  #app.display-theme-darksplit .prayer-display.prayer-color-jummah .time {
-    color: #fbbf24;
-    text-shadow: 0 0 2.5rem rgba(251, 191, 36, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-luhar .iqamah-time,
-  #app.display-theme-darksplit .prayer-display.prayer-color-jummah .iqamah-time {
-    color: #fde68a;
-    text-shadow: 0 0 2.5rem rgba(251, 191, 36, 0.2);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-asr .name {
-    color: #f472b6;
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-asr .time {
-    color: #f472b6;
-    text-shadow: 0 0 2.5rem rgba(244, 114, 182, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-asr .iqamah-time {
-    color: #fbcfe8;
-    text-shadow: 0 0 2.5rem rgba(244, 114, 182, 0.2);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-magrib .name {
-    color: #fb7185;
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-magrib .time {
-    color: #fb7185;
-    text-shadow: 0 0 2.5rem rgba(251, 113, 133, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-magrib .iqamah-time {
-    color: #fecdd3;
-    text-shadow: 0 0 2.5rem rgba(251, 113, 133, 0.2);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-isha .name,
-  #app.display-theme-darksplit .prayer-display.prayer-color-tarawih .name {
-    color: #818cf8;
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-isha .time,
-  #app.display-theme-darksplit .prayer-display.prayer-color-tarawih .time {
-    color: #818cf8;
-    text-shadow: 0 0 2.5rem rgba(129, 140, 248, 0.25);
-  }
-
-  #app.display-theme-darksplit .prayer-display.prayer-color-isha .iqamah-time,
-  #app.display-theme-darksplit .prayer-display.prayer-color-tarawih .iqamah-time {
-    color: #c7d2fe;
-    text-shadow: 0 0 2.5rem rgba(129, 140, 248, 0.2);
   }
 
 
