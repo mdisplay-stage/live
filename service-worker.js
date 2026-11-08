@@ -7,7 +7,7 @@ if (workbox) {
 var baseUrl = '/live/';
 var appVersion = '2.20.2-176';
 var dataVersion = '10';
-var vendorVersion = '14';
+var vendorVersion = '15';
 var bgVersion = '9';
 
 // Detailed logging is very useful during development
@@ -83,7 +83,7 @@ var precacheList = [
     revision: vendorVersion,
   },
   {
-    url: toUrl('assets/images/galaxy-bg1.gif'),
+    url: toUrl('assets/images/galaxy-bg1.svg'),
     revision: vendorVersion,
   },
   // /app
