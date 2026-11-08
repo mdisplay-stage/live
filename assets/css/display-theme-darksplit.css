@@ -669,6 +669,7 @@
   #app.display-theme-darksplit .digital-clock .time .hours .h,
   #app.display-theme-darksplit .digital-clock .time .minutes .m {
     color: #f5f2ea;
+    color: #7fd8ff;
     text-shadow: 0 0 3rem rgba(127, 216, 255, 0.07);
   }
 
