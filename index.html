@@ -831,7 +831,7 @@
         {type: 'next', name: 'nextPrayer', prayer: nextPrayer}
       ]"
           >
-            <div :class="[display.type + '-prayer', 'prayer-display']" v-if="display.prayer">
+            <div :class="[display.type + '-prayer', 'prayer-display', 'prayer-color-' + display.prayer.name.toLowerCase()]" v-if="display.prayer">
               <span class="name"
                 ><span class="label">
                   <span v-if="display.type == 'next' && showTarawihNext">&nbsp;</span>
