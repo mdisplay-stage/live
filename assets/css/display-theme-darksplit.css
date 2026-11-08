@@ -675,15 +675,6 @@
   }
 
   #app.display-theme-darksplit .digital-clock::before {
-    content: '';
-    position: absolute;
-    top: 2rem;
-    left: 4%;
-    right: 4%;
-    height: 32rem;
-    border-radius: 50%;
-    pointer-events: none;
-    background: radial-gradient(ellipse closest-side at 50% 50%, rgba(43, 210, 255, 0.2) 0%, rgba(124, 92, 255, 0.12) 42%, rgba(124, 92, 255, 0) 72%);
   }
 
   #app.display-theme-darksplit .digital-clock .time .hours .h,
