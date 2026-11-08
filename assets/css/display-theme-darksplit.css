@@ -654,12 +654,15 @@
 
   #app.display-theme-darksplit #bgful .bgful-overlay {
     background-color: #02040b;
-    background-image: radial-gradient(ellipse at 16% 12%, rgba(94, 92, 255, 0.28), transparent 58%),
-      radial-gradient(ellipse at 70% 20%, rgba(43, 210, 255, 0.18), transparent 52%),
-      radial-gradient(ellipse at 86% 88%, rgba(255, 95, 158, 0.13), transparent 56%);
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: auto, auto, auto;
-    background-position: 0 0, 0 0, 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    background-image: url("../images/galaxy-bg1.svg");
+    background-size: calc(100vw - 12rem) 100vh;
+    background-position: 0 0;
+    opacity: 0.75;
+    filter: blur(2px);
   }
 
   #app.display-theme-darksplit .branding-bar::after {
