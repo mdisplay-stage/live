@@ -406,47 +406,7 @@
                       </div>
                   </section>
                   </div>
-                  <div class="config-item other-config" style="height: auto;">
-                    <div>
-                      <small>Display Theme</small>
-                      <small>
-                        >
-                        <a href="#" @click="expanded.displayThemes = !expanded.displayThemes;">
-                          <span v-if="expanded.displayThemes">dismiss</span>
-                          <span v-else>{{ getSelected(displayThemes, activeDisplayTheme) }}</span>
-                        </a>
-                      </small>
-                    </div>
-                    <div v-if="expanded.displayThemes">
-                    <label v-for="displayTheme in displayThemes" :for="'display-theme-select-' + displayTheme.id" style="display: block;">
-                      <input
-                        :id="'display-theme-select-' + displayTheme.id"
-                        type="radio"
-                        name="display-theme-select"
-                        :value="displayTheme.id"
-                        v-model="activeDisplayTheme"
-                        @change="expanded.displayThemes = false; updateSettings()"
-                      />
-                      {{ displayTheme.label }}
-                      &nbsp;
-                    </label>
-                    </div>
-                  </div>
-                  <div class="config-item other-config" style="height: auto;">
-                    <label for="masjid-name-input"><small>Masjid / Brand Name</small></label>
-                    <input
-                      id="masjid-name-input"
-                      type="text"
-                      name="masjid-name-input"
-                      v-model="masjidName"
-                      @change="updateSettings()"
-                      class="time-input"
-                      style="width: 100%; box-sizing: border-box;"
-                      placeholder="Enter Masjid Name"
-                      maxlength="80"
-                    />
-                    <div><small>Shown in the Darksplit Aurora branding bar.</small></div>
-                  </div>
+
                   <div class="config-item other-config">
                     <label for="time24-format-check">
                       <input
@@ -567,6 +527,50 @@
                         @change="onRestoreFileChange($event)"
                       />
                      </div>
+                  </div>
+                </div>
+
+                <div class="config-container times-config" v-if="!isDownloadsListOpen" style="margin-bottom: 0.5rem;">
+                  <div class="config-item other-config" style="height: auto;">
+                    <label for="masjid-name-input"><small>Masjid / Brand Name</small></label>
+                    <input
+                      id="masjid-name-input"
+                      type="text"
+                      name="masjid-name-input"
+                      v-model="masjidName"
+                      @change="updateSettings()"
+                      class="time-input"
+                      style="width: 100%; box-sizing: border-box;"
+                      placeholder="Enter Masjid Name"
+                      maxlength="80"
+                    />
+                    <div><small>Shown in new themes.</small></div>
+                  </div>
+                  <div class="config-item other-config" style="height: auto;">
+                    <div>
+                      <small>Display Theme</small>
+                      <small>
+                        >
+                        <a href="#" @click="expanded.displayThemes = !expanded.displayThemes;">
+                          <span v-if="expanded.displayThemes">dismiss</span>
+                          <span v-else>{{ getSelected(displayThemes, activeDisplayTheme) }}</span>
+                        </a>
+                      </small>
+                    </div>
+                    <div v-if="expanded.displayThemes">
+                    <label v-for="displayTheme in displayThemes" :for="'display-theme-select-' + displayTheme.id" style="display: block;">
+                      <input
+                        :id="'display-theme-select-' + displayTheme.id"
+                        type="radio"
+                        name="display-theme-select"
+                        :value="displayTheme.id"
+                        v-model="activeDisplayTheme"
+                        @change="expanded.displayThemes = false; updateSettings()"
+                      />
+                      {{ displayTheme.label }}
+                      &nbsp;
+                    </label>
+                    </div>
                   </div>
                 </div>
 
