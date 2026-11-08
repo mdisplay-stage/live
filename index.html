@@ -432,6 +432,21 @@
                     </label>
                     </div>
                   </div>
+                  <div class="config-item other-config" style="height: auto;">
+                    <label for="masjid-name-input"><small>Masjid / Brand Name</small></label>
+                    <input
+                      id="masjid-name-input"
+                      type="text"
+                      name="masjid-name-input"
+                      v-model="masjidName"
+                      @change="updateSettings()"
+                      class="time-input"
+                      style="width: 100%; box-sizing: border-box;"
+                      placeholder="Enter Masjid Name"
+                      maxlength="80"
+                    />
+                    <div><small>Shown in the Darksplit Aurora branding bar.</small></div>
+                  </div>
                   <div class="config-item other-config">
                     <label for="time24-format-check">
                       <input
@@ -764,7 +779,7 @@
           <img :src="'assets/images/' + currentlyShowingAlert">
         </div>
         <div class="branding-bar" v-if="activeDisplayTheme == 'darksplit'">
-          <span class="masjid-name">{{ masjidName }}</span>
+          <span class="masjid-name">{{ masjidName || 'Enter Masjid Name in Settings' }}</span>
         </div>
         <div class="digital-clock" v-if="timeIsValid">
           <span class="time">

@@ -210,7 +210,7 @@ function App() {
     alertEnabled: true,
     analogClockTheme: 'default',
     activeDisplayTheme: 'digital-default',
-    masjidName: localStorage.getItem('mdisplay.masjidName') || 'Enter Masjid Name in Settings',
+    masjidName: localStorage.getItem('mdisplay.masjidName') || '',
     networkTimeInitialized: false,
     timeIsValid: false,
     timeFetchingMessage: undefined,
@@ -1470,6 +1470,14 @@ function App() {
     localStorage.setItem('mdisplay.prayerNewDataId', self.data.selectedPrayerNewDataId);
     localStorage.setItem('mdisplay.sunriseSupport', self.data.sunriseSupport ? 1 : 0);
 
+    var masjidName = (self.data.masjidName || '').replace(/^\s+|\s+$/g, '');
+    self.data.masjidName = masjidName;
+    if (masjidName) {
+      localStorage.setItem('mdisplay.masjidName', masjidName);
+    } else {
+      localStorage.removeItem('mdisplay.masjidName');
+    }
+
     if (callback) {
       callback();
     }
@@ -1503,6 +1511,7 @@ function App() {
       'mdisplay.prayerDataId': true,
       'mdisplay.prayerNewDataId': true,
       'mdisplay.sunriseSupport': true,
+      'mdisplay.masjidName': true,
     }) {
       backupData[key] = localStorage.getItem(key);
     }
