@@ -685,7 +685,8 @@
     background-image: linear-gradient(180deg, #ffffff 0%, #ffffff 24%, #ffffff 36%, #0097ff 100%);
     background-image: linear-gradient(180deg, #ffffff 0%, #ffffff 44%, #000 56%, #0097ff  66%, #0097ff 100%); */
     /* background-image: linear-gradient(180deg, #ffffff 0%, #d4e4ff 24%, #4cb6ff 56%, #ffffff 100%); */
-    background-image: linear-gradient(180deg, #ffffff 0%, #bee5ff 44%, #5cbcff 66%, #0098ff 76%, #0097ff 100%);
+    /* background-image: linear-gradient(180deg, #ffffff 0%, #bee5ff 44%, #5cbcff 66%, #0098ff 76%, #0097ff 100%); */
+    background-image: linear-gradient(180deg, #ffffff 0%, #ffffff 20%, #bee5ff 46%, #5cbcff 66%, #0097ff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

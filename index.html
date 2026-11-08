@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/theme-default.css?v=2.20.1-175" />
     <link rel="stylesheet" type="text/css" href="assets/css/display-theme-digital-modern.css?v=2.20.1-175" />
     <link rel="stylesheet" type="text/css" href="assets/css/display-theme-analog-modern.css?v=2.20.1-175" />
+    <link rel="stylesheet" type="text/css" href="assets/css/display-theme-galaxymin.css?v=2.20.1-175" />
     <link rel="stylesheet" type="text/css" href="assets/css/display-theme-darksplit.css?v=2.20.1-175" />
   </head>
   <body>
@@ -782,7 +783,7 @@
         <div v-if="currentPrayer && focusActiveTimer" class="alert-container" :style="{opacity: showAlert ? '1' : '0'}">
           <img :src="'assets/images/' + currentlyShowingAlert">
         </div>
-        <div class="branding-bar" v-if="activeDisplayTheme == 'darksplit'">
+        <div class="branding-bar" v-if="activeDisplayTheme == 'darksplit' || activeDisplayTheme == 'galaxymin'">
           <span class="masjid-name">{{ masjidName || 'Enter Masjid Name in Settings' }}</span>
         </div>
         <div class="digital-clock" v-if="timeIsValid">
@@ -813,7 +814,7 @@
               ><span class="m">{{ timeDisplayMinutes }}</span>
 
               <span class="seconds-container">
-                <svg class="seconds-ring" viewBox="0 0 64 64" aria-hidden="true" v-if="activeDisplayTheme == 'darksplit'">
+                <svg class="seconds-ring" viewBox="0 0 64 64" aria-hidden="true" v-if="activeDisplayTheme == 'darksplit' || activeDisplayTheme == 'galaxymin'">
                   <circle class="seconds-ring-track" cx="32" cy="32" r="28" fill="none" stroke-width="4"></circle>
                   <circle class="seconds-ring-progress" cx="32" cy="32" r="28" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="175.93" transform="rotate(-90 32 32)" :stroke-dashoffset="secondsRingOffset"></circle>
                   <g :transform="'rotate(' + secondsRingAngle + ' 32 32)'">
