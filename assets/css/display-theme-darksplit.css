@@ -24,7 +24,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 13rem;
+    right: 0;
     height: 4.25rem;
     background-color: rgba(8, 12, 18, 0.09);
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 60%);
@@ -345,8 +345,8 @@
   }
 
   #app.display-theme-darksplit #version-info {
-    right: 13rem !important;
     padding: 0.25rem 0.5rem !important;
+    right: 0 !important;
   }
 
   #app.display-theme-darksplit #version-info .version-text {
@@ -360,7 +360,7 @@
   /* Right column: prayer timetable (five equal 20vh bands) */
   #app.display-theme-darksplit .prayer-info-container {
     position: absolute;
-    top: 0;
+    top: auto;
     right: 0;
     bottom: 0;
     left: auto;
@@ -383,6 +383,7 @@
     border-bottom: 1px solid rgba(2, 4, 8, 0.35);
     overflow: hidden;
     transition: all 300ms;
+    height: calc((100vh - 4.25rem) / 5);
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(1) {
@@ -506,6 +507,7 @@
     font-size: 4rem;
     line-height: 4rem;
     white-space: nowrap;
+    margin-top: -0.25rem;
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-time {
