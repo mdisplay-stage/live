@@ -474,7 +474,7 @@
     width: 100%;
     height: 2rem;
     line-height: 2rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0;
     padding: 0 0.6rem;
     background: rgba(4, 7, 12, 0.35);
@@ -710,6 +710,12 @@
   #app.display-theme-darksplit .prayer-info-container .prayer-info.is-current {
     /* box-shadow: inset 0 0 3rem rgba(126, 255, 116, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.55); */
     border-left: 0.5rem solid #FFF !important;
+
+    /* border-left: 0.25rem solid #FFF; */
+    /* box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.95), inset 0px 0px 15px 2px rgba(255, 255, 255, 0.95); */
+    /* box-shadow: inset 15px 0px 15px -10px rgba(255, 255, 255, 0.99); */
+    box-shadow: inset 1.25rem 0px 1rem -0.75rem rgba(255, 255, 255, 0.99);
+
   }
 
   #app.display-theme-darksplit.active-prayer-info-iqamah .prayer-info-container .prayer-info.is-current {
