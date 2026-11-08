@@ -398,7 +398,7 @@
     background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.045) 0, rgba(255, 255, 255, 0.045) 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0) 1rem),
       repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.045) 0, rgba(255, 255, 255, 0.045) 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0) 1rem),
       radial-gradient(ellipse at 50% 48%, rgba(2, 3, 6, 0.24), rgba(2, 3, 6, 0.09) 58%, rgba(2, 3, 6, 0) 80%),
-      radial-gradient(ellipse at 0% 0%, rgba(34, 211, 238, 0.13), rgba(34, 211, 238, 0) 55%),
+      radial-gradient(ellipse at 0% 0%, rgba(163, 230, 53, 0.13), rgba(163, 230, 53, 0) 55%),
       linear-gradient(135deg, #064a4a 0%, #03302f 46%, #011414 100%);
   }
 
@@ -441,8 +441,8 @@
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(3) .prayer-name::before {
-    background: #22d3ee;
-    box-shadow: 0 0 0.7rem rgba(34, 211, 238, 0.8);
+    background: #a3e635;
+    box-shadow: 0 0 0.7rem rgba(163, 230, 53, 0.8);
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(4) .prayer-name {
@@ -721,13 +721,13 @@
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(3) .prayer-time {
-    color: #22d3ee;
-    text-shadow: 0 0 1.4rem rgba(34, 211, 238, 0.35);
+    color: #bef264;
+    text-shadow: 0 0 1.4rem rgba(163, 230, 53, 0.35);
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(3) .iqamah-time {
-    color: #a5f3fc;
-    text-shadow: 0 0 1.4rem rgba(34, 211, 238, 0.25);
+    color: #d9f99d;
+    text-shadow: 0 0 1.4rem rgba(163, 230, 53, 0.25);
   }
 
   #app.display-theme-darksplit .prayer-info-container .prayer-info:nth-child(4) .prayer-time {
@@ -785,17 +785,17 @@
   }
 
   #app.display-theme-darksplit .prayer-display.prayer-color-asr .name {
-    color: #22d3ee;
+    color: #bef264;
   }
 
   #app.display-theme-darksplit .prayer-display.prayer-color-asr .time {
-    color: #22d3ee;
-    text-shadow: 0 0 2.5rem rgba(34, 211, 238, 0.25);
+    color: #bef264;
+    text-shadow: 0 0 2.5rem rgba(163, 230, 53, 0.25);
   }
 
   #app.display-theme-darksplit .prayer-display.prayer-color-asr .iqamah-time {
-    color: #a5f3fc;
-    text-shadow: 0 0 2.5rem rgba(34, 211, 238, 0.2);
+    color: #d9f99d;
+    text-shadow: 0 0 2.5rem rgba(163, 230, 53, 0.2);
   }
 
   #app.display-theme-darksplit .prayer-display.prayer-color-magrib .name {
